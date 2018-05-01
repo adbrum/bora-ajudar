@@ -32,6 +32,7 @@ class Campaigns extends Component {
     }
 
     /*Função para pedidos em um servidor externo*/
+
     /*handleDonate(key) {
         axios
             .post('/api/donate', {
@@ -45,7 +46,7 @@ class Campaigns extends Component {
     }*/
 
     renderCampaign(key, campaign) {
-        const porcent =  (parseFloat(campaign.current) / parseFloat(campaign.goal)) * 100
+        const porcent = (parseFloat(campaign.current) / parseFloat(campaign.goal)) * 100
         return (
             <section key={key} className='page-section'>
                 <div className='container'>
@@ -66,10 +67,12 @@ class Campaigns extends Component {
                                     campaign.type === 'money' &&
                                     <div>
                                         <div className='progress'>
-                                            <div style={{width: parseInt(porcent)+'%'}} className='progress-bar' role='progressbar' aria-valuenow='50'
-                                                 aria-valuemin='0' aria-valuemax='100'/>
+                                            <div style={{width: parseInt((porcent), 0) + '%'}} className='progress-bar'
+                                                 role='progressbar' aria-valuenow='50' aria-valuemin='0'
+                                                 aria-valuemax='100'/>
                                         </div>
-                                        <p>Meta: €{parseFloat(campaign.goal).toFixed(2)} | Atingidos: €{parseFloat(campaign.current).toFixed(2)}</p>
+                                        <p>Meta: €{parseFloat(campaign.goal).toFixed(2)} | Atingidos:
+                                            €{parseFloat(campaign.current).toFixed(2)}</p>
                                         <select className='form form-control' ref={ref => this.value = ref}>
                                             <option value="2.00">€2,00</option>
                                             <option value="5.00">€5,00</option>
@@ -138,6 +141,11 @@ class Campaigns extends Component {
                         </div>
                     </div>
                 </section>
+                {
+                    Object
+                        .keys(this.state.campaigns)
+                        .map(key => this.renderCampaign(key, this.state.campaigns[key]))
+                }
             </div>
         )
     }

@@ -23,34 +23,45 @@ class NewCampaign extends Component {
     }
 
     handleSave() {
+        console.log('TIPO: ', this.state.type)
         const name = this.name.value
-        const slogan = this.slogan.value
         const description = this.description.value
-        const type = this.type.value
+        const slogan = this.slogan.value
+        const type = this.state.type
         const how = this.state.type === 'items' ? this.how.value : null
         const goal = this.state.type === 'money' ? this.goal.value : null
+        // const current = this.state.type === 'money' ? this.current.value : null
 
-        base
-            .push('campaigns', {
-                data: {name, slogan, description, type, how, goal},
-                then: err => {
-                    if (!err) {
-                        this.name.value = ''
-                        this.description.value = ''
-                        this.slogan.value = ''
-                        this.setState({type: ''})
-                        if (this.goal) {
-                            this.goal.value = ''
-                        }
-                        if (this.current) {
-                            this.current.value = ''
-                        }
-                        if (this.how) {
-                            this.how.value = ''
-                        }
+        base.push('campaigns', {
+            data: {
+                name: name,
+                description: description,
+                goal: goal,
+                how: how,
+                slogan: slogan,
+                type: type,
+                // current: current,
+            },
+            then: err => {
+                if (!err) {
+                    this.name.value = ''
+                    this.description.value = ''
+                    this.slogan.value = ''
+                    this.setState({type: ''})
+                    if (this.goal) {
+                        this.goal.value = ''
                     }
+                    // if(this.current){
+                    //     this.current.value = ''
+                    // }
+                    if (this.how) {
+                        this.how.value = ''
+                    }
+
+
                 }
-            })
+            }
+        })
     }
 
     render() {
@@ -82,20 +93,20 @@ class NewCampaign extends Component {
                     <div className='form-group'>
                         <label htmlFor='description'>Descrição</label>
                         <textarea className='form-control' id='description' placeholder='Fale sobre esta campanha'
-                                  ref={ref => {this.description = ref}}
+                                  ref={ref => {
+                                      this.description = ref
+                                  }}
                         />
                     </div>
 
                     <div className='form-group'>
-                        <label>Tipo da campanha</label><br />
+                        <label>Tipo da campanha</label><br/>
                         <input type='radio' className='custom-radiol' name='type'
-                               onClick={() => this.setState({type: 'money'})} ref={ref => {
-                            this.type = ref
-                        }}/> Doação em dinheiro <br />
+                               onClick={() => this.setState({type: 'money'})}
+                        /> Doação em dinheiro <br/>
                         <input type='radio' className='custom-radiol' name='type'
-                               onClick={() => this.setState({type: 'items'})} ref={ref => {
-                            this.type = ref
-                        }}/> Produtos <br />
+                               onClick={() => this.setState({type: 'items'})}
+                        /> Produtos <br/>
                     </div>
 
                     {
@@ -105,6 +116,7 @@ class NewCampaign extends Component {
                             <input type='number' placeholder='0,00' className='form-control' ref={ref => {
                                 this.goal = ref
                             }}/>
+                            {/*Doado:<input type="text" ref={ref => this.current = ref} defaultValue={0}/>*/}
                         </div>
                     }
 

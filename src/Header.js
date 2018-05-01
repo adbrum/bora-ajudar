@@ -37,6 +37,11 @@ const Header = (props ) => {
                                     Contato
                                 </Link>
                             </li>
+                            <li className='nav-item px-lg-4'>
+                                <Link to='/login' className='nav-link text-uppercase text-expanded'>
+                                    Administração
+                                </Link>
+                            </li>
                         </ul>
                     </div>
                 </div>

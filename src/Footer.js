@@ -8,7 +8,7 @@ const Footer = (props) => {
                     <a href='https://www.devpleno.com/software-do-bem'>
                         <img src='/img/software-do-bem-logo-320x128.png' alt='' />
                     </a><br />
-                    Desenvolvido durante o Hands-on ReactJS do DevPleno por Tulio Faria. Saiba mais.
+                    Desenvolvido durante o Hands-on ReactJS do DevPleno.
                 </p>
             </div>
         </footer>

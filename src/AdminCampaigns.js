@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 
 import base from './base'
+import NewCampaign from "./NewCampaign";
 
 // import NewCampaign from './NewCampaign'
 
@@ -59,17 +60,15 @@ class AdminCampaigns extends Component {
                     this.description.value = ''
                     this.slogan.value = ''
                     this.setState({type: ''})
-                    if(this.goal){
+                    if (this.goal) {
                         this.goal.value = ''
                     }
-                    if(this.current){
+                    if (this.current) {
                         this.current.value = ''
                     }
-                    if(this.how){
+                    if (this.how) {
                         this.how.value = ''
                     }
-
-
                 }
             }
         })
@@ -81,23 +80,7 @@ class AdminCampaigns extends Component {
                 <h2 className='text-center'>Campanhas</h2>
                 <div className='card'>
                     <div className='card-body'>
-                        Campanha: <input type="text" className='form form-control' ref={ref => this.name = ref}/><br/>
-                        Sub-título: <input type="text" className='form form-control'
-                                           ref={ref => this.slogan = ref}/><br/>
-                        Descrição: <textarea className='form form-control' ref={ref => this.description = ref}/><br/>
-                        Tipo: <br/>
-                        <input type="radio" name='type' onClick={() => this.setState({type: 'money'})}/> Doação <br/>
-                        <input type="radio" name='type' onClick={() => this.setState({type: 'items'})}/> Produtos <br/>
-                        {this.state.type === 'money' && <div>
-                            <h4>Doação</h4>
-                            Meta:<input type="text" ref={ref => this.goal = ref}/>
-                            Doado:<input type="text" ref={ref => this.current = ref} defaultValue={0}/>
-                        </div>}
-                        {this.state.type === 'items' && <div>
-                            <h4>Produtos</h4>
-                            <input type="text" ref={ref => this.how = ref}/>
-                        </div>}
-                        <button className='tn btn-success btn-sm mr-1' onClick={this.handleSave}>Salvar</button>
+                        <NewCampaign/>
                         <div className='row'>
                             <ul>
                                 {
@@ -107,7 +90,6 @@ class AdminCampaigns extends Component {
                                 }
                             </ul>
                         </div>
-                        {/*<NewCampaign />*/}
                     </div>
                 </div>
             </div>
@@ -121,7 +103,9 @@ class AdminCampaigns extends Component {
                     <div className='card-body'>
                         <h5 className='card-title text-center'>{campaign.name}</h5>
                         <p>{campaign.description}</p>
-                        <button className='btn btn-primary btn-sm mr-1'>Editar</button>
+                        <button className='btn btn-primary btn-sm mr-1'
+                                onClick={null}>Editar
+                        </button>
                         <button className='btn btn-danger btn-sm ml-1'
                                 onClick={() => this.removeCampaign(key)}>Remover
                         </button>
@@ -130,7 +114,6 @@ class AdminCampaigns extends Component {
             </div>
         )
     }
-
 }
 
 export default AdminCampaigns

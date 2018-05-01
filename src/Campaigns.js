@@ -10,7 +10,8 @@ class Campaigns extends Component {
 
         this.state = {
             campaigns: {},
-            redirectDonate: ''
+            redirectDonate: '',
+            value: ''
         }
     }
 
@@ -25,7 +26,8 @@ class Campaigns extends Component {
     handleDonate(key) {
 
         this.setState({
-            redirectDonate: true
+            redirectDonate: true,
+            value: this.value.value
         })
     }
 
@@ -43,6 +45,7 @@ class Campaigns extends Component {
     }*/
 
     renderCampaign(key, campaign) {
+        const porcent =  (parseFloat(campaign.current) / parseFloat(campaign.goal)) * 100
         return (
             <section key={key} className='page-section'>
                 <div className='container'>
@@ -63,10 +66,17 @@ class Campaigns extends Component {
                                     campaign.type === 'money' &&
                                     <div>
                                         <div className='progress'>
-                                            <div className='progress-bar' role='progressbar' aria-valuenow='50'
+                                            <div style={{width: parseInt(porcent)+'%'}} className='progress-bar' role='progressbar' aria-valuenow='50'
                                                  aria-valuemin='0' aria-valuemax='100'/>
                                         </div>
-                                        <p>Meta: R$ {campaign.goal} | Atingidos: R$ {campaign.current}</p>
+                                        <p>Meta: €{parseFloat(campaign.goal).toFixed(2)} | Atingidos: €{parseFloat(campaign.current).toFixed(2)}</p>
+                                        <select className='form form-control' ref={ref => this.value = ref}>
+                                            <option value="2.00">€2,00</option>
+                                            <option value="5.00">€5,00</option>
+                                            <option value="10.00">€10,00</option>
+                                            <option value="50.00">€50,00</option>
+                                        </select>
+                                        <br/>
                                         <div>
                                             <button className='btn btn-success'
                                                     onClick={() => this.handleDonate(key)}>Contribuir
@@ -96,7 +106,7 @@ class Campaigns extends Component {
 
     render() {
         if (this.state.redirectDonate !== '') {
-            return <Redirect to={'/donate'}/>
+            return <Redirect to={'/donate'} value={this.state.value}/>
         }
         /*if (this.state.redirectDonate !== '') {
             return <Redirect to={'/donate'}/>
@@ -128,11 +138,6 @@ class Campaigns extends Component {
                         </div>
                     </div>
                 </section>
-                {
-                    Object
-                        .keys(this.state.campaigns)
-                        .map(key => this.renderCampaign(key, this.state.campaigns[key]))
-                }
             </div>
         )
     }

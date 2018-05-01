@@ -1,5 +1,9 @@
 import React from 'react'
 
+fetch('/api')
+    .then(value => value.text())
+    .then(value => console.log(value))
+
 const Home = (props) => {
     return (
         <div>

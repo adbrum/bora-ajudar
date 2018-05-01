@@ -4,15 +4,15 @@ import {
     Route
 } from 'react-router-dom'
 
-import Header from "./Header"
-import Footer from "./Footer"
-import Home from "./Home"
-import About from "./About"
-import Contact from "./Contact"
-import Campaigns from "./Campaigns"
-import Admin from "./Admin"
-import Login from "./Login";
-import Donate from "./Donate";
+import Header from "./components/Header/Header"
+import Footer from "./components/Footer/Footer"
+import Home from "./components/Home/Home"
+import About from "./components/About/About"
+import Contact from "./components/Contact/Contact"
+import Campaigns from "./components/Campanigns/Campaigns"
+import Admin from "./components/Admin/Admin"
+import Login from "./components/Login/Login";
+import Donate from "./components/Campanigns/Donate";
 
 
 class App extends Component {

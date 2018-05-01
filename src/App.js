@@ -12,6 +12,7 @@ import Contact from "./Contact"
 import Campaigns from "./Campaigns"
 import Admin from "./Admin"
 import Login from "./Login";
+import Donate from "./Donate";
 
 
 class App extends Component {
@@ -26,6 +27,7 @@ class App extends Component {
               <Route exact path='/contact' component={Contact}/>
               <Route path='/admin' component={Admin}/>
               <Route exact path='/login' component={Login}/>
+              <Route exact path='/donate' component={Donate}/>
               <Footer/>
           </div>
         </Router>

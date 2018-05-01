@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-import base from './base'
+import base from '../../base'
 import NewCampaign from "./NewCampaign";
 
 // import NewCampaign from './NewCampaign'

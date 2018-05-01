@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {Redirect} from 'react-router-dom'
 // import axios from 'axios'
 
-import base from './base'
+import base from '../../base'
 
 class Campaigns extends Component {
     constructor(props) {

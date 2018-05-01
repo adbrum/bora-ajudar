@@ -5,9 +5,9 @@ import {
     Redirect
 } from 'react-router-dom'
 
-import { auth } from './base'
+import { auth } from '../../base'
 // import AdminHome from './AdminHome'
-import AdminCampaigns from './AdminCampaigns'
+import AdminCampaigns from '../Campanigns/AdminCampaigns'
 
 class Admin extends Component {
     constructor(props) {

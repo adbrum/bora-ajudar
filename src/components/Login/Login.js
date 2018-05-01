@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 
-import { auth } from './base'
+import { auth } from '../../base'
 
 class Login extends Component {
     constructor (props) {

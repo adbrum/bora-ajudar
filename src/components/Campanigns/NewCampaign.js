@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-import base from './base'
+import base from '../../base'
 
 class NewCampaign extends Component {
     constructor(props) {
@@ -40,7 +40,7 @@ class NewCampaign extends Component {
                 how: how,
                 slogan: slogan,
                 type: type,
-                // current: current,
+                current: 0,
             },
             then: err => {
                 if (!err) {
@@ -51,9 +51,9 @@ class NewCampaign extends Component {
                     if (this.goal) {
                         this.goal.value = ''
                     }
-                    // if(this.current){
-                    //     this.current.value = ''
-                    // }
+                    if(this.current){
+                        this.current.value = ''
+                    }
                     if (this.how) {
                         this.how.value = ''
                     }

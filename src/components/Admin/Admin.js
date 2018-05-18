@@ -2,12 +2,14 @@ import React, { Component } from 'react'
 import {
     Link,
     Route,
-    Redirect
+    Redirect, Switch
 } from 'react-router-dom'
 
 import { auth } from '../../base'
 // import AdminHome from './AdminHome'
 import AdminCampaigns from '../Campanigns/AdminCampaigns'
+import AdminEditCampaign from "../Campanigns/AdminEditCampaign";
+import Home from "../Home/Home";
 
 class Admin extends Component {
     constructor(props) {
@@ -55,10 +57,14 @@ class Admin extends Component {
                             </ul>
                         </div>
                         <div className='col-8'>
-                            {/*<Route path={this.props.match.url} exact component={AdminHome} />*/}
-                            <Route path={`${this.props.match.url}/campaigns`} component={AdminCampaigns} />
+                            <Switch>
+                                <Route exact path='/' component={Admin} />
+                                <Route path={`${this.props.match.url}/campaigns/:id`} component={AdminEditCampaign} />
+                                <Route path={`${this.props.match.url}/campaigns`} component={AdminCampaigns} />
+                            </Switch>
                         </div>
                     </div>
+
                 </div>
             </div>
         )

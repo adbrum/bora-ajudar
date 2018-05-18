@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 
 import base from '../../base'
 import NewCampaign from "./NewCampaign";
+import {Link, Route} from "react-router-dom";
+import AdminEditCampaign from "./AdminEditCampaign";
 
 // import NewCampaign from './NewCampaign'
 
@@ -62,12 +64,16 @@ class AdminCampaigns extends Component {
                     <div className='card-body'>
                         <h5 className='card-title text-center'>{campaign.name}</h5>
                         <p>{campaign.description}</p>
-                        <button className='btn btn-primary btn-sm mr-1'>Editar</button>
+                        <Link to={`/admin/campaigns/${key}`} className='btn btn-primary btn-sm mr-1'>Editar</Link>
                         <button className='btn btn-danger btn-sm ml-1'
                                 onClick={() => this.removeCampaign(key)}>Remover
                         </button>
                     </div>
                 </div>
+
+                <Route path={`/admin/campaigns/${key}`} className='btn btn-primary btn-sm mr-1'
+                       render={(props) => (<AdminEditCampaign {...props} campaign={campaign}/>)}
+                />
             </div>
         )
     }
